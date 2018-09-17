@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>회원가입 페이지</title>
+        <style>
+            *{ font-size: 12px; margin: 0; padding: 0; }
+            td { margin:10px; padding: 10px; }
+            input { border:1px solid #cccccc; padding: 5px; font-size: 1.2em; font-weight: bold; }
+            tr td:first-child { width: 130px; background-color: #eeeeee; }
+            
+            #wrap {
+                width: 800px;
+                border: 1px solid #ffffff;
+                margin: 0 auto;
+            }
+            
+            #joinTitle {
+                padding: 10px; margin: 10px;
+                background-color: #ffffff;
+                text-align: center;
+            }
+            
+            #joinTitle p {
+                font-size: 1.5em;
+            }
+            
+            .uphone {
+                width: 100px;
+            }
+            
+            .add {
+                width: 290px;
+                margin-top: 4px;
+            }
+            
+            .mailoff, .phoneoff {
+                font-size: 1.2em;
+                padding: 3px;
+            }
+            
+            #joinBtn {
+                padding: 10px; margin: 10px;
+                background-color: #ffffff;
+                text-align: center;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <br />
+        <div id="wrap">
+            <form action="/join" method="post">
+                <div id="joinTitle">
+                    <p>회원 가입</p>
+                </div>
+                <hr />
+                <table>
+                    <tr>
+                        <td>아이디</td>
+                        <td><input type="text" name="uid"></td>
+                    </tr>
+                    <tr>
+                        <td>비밀번호</td>
+                        <td><input type="password" name="upw"></td>
+                    </tr>
+                    <tr>
+                        <td>비밀번호 확인</td>
+                        <td><input type="password" name="upwc"></td>
+                    </tr>
+                    
+                    <tr>
+                    	<td>이름</td>
+                        <td><input type="text" name="uname"></td>
+                    </tr>
+
+                    <tr>
+                    	<td>닉네임</td>
+                        <td><input type="text" name="unickname"></td>
+                    </tr>
+
+                    <tr>
+                    	<td>성별</td>
+                    	<td>
+                    		<input type = "radio" name ="gender" value = "남">남자 </input>
+                    		<input type = "radio" name ="gender" value = "여">여자 </input>
+                    	</td>
+                    </tr>
+                    <tr>
+                        <td>전화번호</td>
+                        <td><input class="uphone" type="text" name="uphone1"> - <input class="uphone" type="text" name="uphone2"> - <input class="uphone" type="text" name="uphone3"></td>
+                    </tr>
+                    <tr>
+                        <td>이메일</td>
+                        <td>
+                            <input type="text" name="upostcode">
+                            @
+                            <select class="mailoff" name="umail">
+                                <option value="etc">직접입력</option>
+                                <option value="naver.com">naver.com</option>
+                                <option value="gmail.com">gmail.com</option>
+                                <option value="yahoo.com">yahoo.com</option>
+                                <option value="daum.net">daum.net</option>
+                            <select>
+                        </td>
+                    </tr>
+                
+                </table>
+                <hr />
+                <div id="joinBtn">
+                    <input type="submit" name="join" value="회원가입">&nbsp;&nbsp;<input type="reset" name="cancel" value="취소">
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
+

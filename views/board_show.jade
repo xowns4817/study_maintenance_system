@@ -1,0 +1,118 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    | &#x9;&#x9;
+    style.
+      .wrap {
+      margin: 0 auto;
+      text-align: center;
+      }
+      .title {
+      margin-top: 100px;
+      }
+      .table {
+      margin: 0 auto;
+      margin-bottom: 50px;
+      margin-top:70px;
+      }
+      .user_info {
+      font-size: 2.0em;
+      text-align: right;
+      margin: 50px;
+      }
+      .btn {
+      width: 200px;
+      height: 55px;
+      font-size: 25px;
+      margin:10px;
+      }
+      .show_title {
+      padding:30px;
+      border: 1px solid #000000;
+      }
+      .show_content {
+      padding:100px;
+      border: 1px solid #000000;
+      }
+      .comment {
+      margin:50px;
+      font-size: 2.0em;
+      }
+      .comment_content {
+      font-size: 1.2em
+      }
+  | &#x9;
+  body
+    .wrap
+      a(href='/board')
+        .title
+          font(size='7.0em') &#xC2A4;&#xD130;&#xB514; &#xC790;&#xC720; &#xAC8C;&#xC2DC;&#xD310;
+      | &#x9;&#x9;&#x9;
+      .user_info
+        div #{user_nickname}
+          | &#xB2D8; &#xD658;&#xC601;&#xD569;&#xB2C8;&#xB2E4;.
+        | &#x9;&#x9;&#x9;&#x9;
+        a(href='/logout') &#xB85C;&#xADF8;&#xC544;&#xC6C3;
+      | &#x9;&#x9;&#x9;&#x9;
+      table.table
+        tr
+          td
+            font(size='6') &#xC81C;&#xBAA9; &nbsp;&nbsp; 
+          | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+          td
+            .show_title
+              p(style='font-size:25px')= result.title
+      | &#x9;&#x9;&#x9;&#x9;
+      table.table
+        tr
+          td
+            font(size='6') &#xAC8C;&#xC2DC;&#xBB3C; &nbsp;&nbsp; 
+          | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+          td
+            .show_content
+              p(style='font-size:25px')= result.content
+      | &#x9;&#x9;&#x9;
+
+      article
+         div
+          a(href='/board/add')
+               button(type='button' class = 'btn') 게시물 추가
+      -  if (result)
+      -   if(result.writer_id === user_id || user_admin === 'Y')
+          div
+            a(href = '/board/' + result.id + '/edit')
+              button(type='button' class = 'btn') 게시물 수정
+          div
+           a(href = '/board/' + result.id + '/delete')
+               button(type='button' class = 'btn') 게시물 삭제
+      |             
+      form(action='/comment/' + result.id, method='post')
+        table.table
+          tr
+            td
+              textarea.comment_content(name='comment', cols='50', rows='5', placeholder='댓글을 남겨주세요.')
+            | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+            td
+              input.btn(type='submit', value='댓글 작성')
+      |           
+      -var length = comments.length
+      -var year, month, day, hour, minute, second, created
+        - for(var i=0; i<length; i++){
+          tr
+            td 
+              font(size='6')= comments[i].nickname
+            p
+            td= comments[i].content
+            p
+            -year = comments[i].created.getFullYear();
+            -month = comments[i].created.getMonth() + 1;
+            -day = comments[i].created.getDate();
+            -hour = comments[i].created.getHours();
+            -minute = comments[i].created.getMinutes();
+            -second = comments[i].created.getSeconds();
+            -created = year + "." + month + "." + day + "." + hour + "." + minute + "." + second + ".";
+            td= created
+            p
+            hr
+        -}

@@ -1,0 +1,26 @@
+{
+  "name": "study_maintenance_system",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.315.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "express-mysql-session": "^2.0.1",
+    "express-session": "^1.15.6",
+    "formidable": "^1.2.1",
+    "jade": "^1.11.0",
+    "method-override": "^3.0.0",
+    "mysql": "^2.16.0",
+    "node-mysql": "^0.4.2",
+    "nodemailer": "^4.6.8",
+    "object-assign": "^4.1.1",
+    "pbkdf2-password": "^1.2.1"
+  }
+}

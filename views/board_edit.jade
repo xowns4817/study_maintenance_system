@@ -1,0 +1,62 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    | &#x9;&#x9;
+    style.
+      .wrap {
+      margin: 0 auto;
+      text-align: center;
+      }
+      .title {
+      margin-top: 100px;
+      }
+      .table {
+      margin: 0 auto;
+      margin-bottom: 100px;
+      }
+      .user_info {
+      font-size: 2.0em;
+      text-align: right;
+      margin: 50px;
+      }
+      .btn {
+      width: 200px;
+      height: 55px;
+      font-size: 25px;
+      }
+  | &#x9;
+  body
+    .wrap
+      a(href='/board')
+        .title
+          font(size='7.0em') &#xC2A4;&#xD130;&#xB514; &#xC790;&#xC720; &#xAC8C;&#xC2DC;&#xD310;
+      | &#x9;&#x9;&#x9;
+      .user_info
+        div #{user_nickname}
+          | &#xB2D8; &#xD658;&#xC601;&#xD569;&#xB2C8;&#xB2E4;.
+        | &#x9;&#x9;&#x9;&#x9;
+        a(href='/logout') &#xB85C;&#xADF8;&#xC544;&#xC6C3;
+      | &#x9;&#x9;&#x9;
+      form(action='/board/' + result.id + '/edit/?_method=PUT' method = 'post')
+        table.table
+          tr
+            td
+              font(size='6') &#xC81C;&#xBAA9; &nbsp;&nbsp; 
+            | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+            td
+              input(type='text', name='title', style='font-size:25px' placeholder = result.title)
+        | &#x9;&#x9;&#x9;&#x9;
+        table.table
+          tr
+            td
+              font(size='6') &#xAC8C;&#xC2DC;&#xBB3C; &nbsp;&nbsp; 
+            | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+            td
+              textarea(name='content', cols='50', rows='15', style='font-size:25px' placeholder = result.content)
+        | &#x9;&#x9;&#x9;&#x9;
+        input.btn(type='submit', value='확인')
+        | &#x9;&#x9;&#x9;&#x9;
+        a(href='/board/')
+          button(type='button' class = 'btn') 취소
+  

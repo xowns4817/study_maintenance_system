@@ -1,0 +1,50 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    | &#x9;&#x9;
+    title &#xAE30;&#xC5C5;&#xBD84;&#xC11D; &#xC5C5;&#xB85C;&#xB4DC;
+    | &#x9;&#x9;
+    style.
+      .content {
+      margin: 0 aut0;
+      text-align: center;
+      }
+      .title {
+      margin: 50px;
+      }
+      .user_info {
+      font-size: 2.0em;
+      text-align: right;
+      margin: 50px;
+      }
+      .input {
+        margin:40px;
+      }
+  | &#x9;
+  body
+    .content
+      .title
+        font(size='10') &#xAE30;&#xC5C5;&#xBD84;&#xC11D; &#xC5C5;&#xB85C;&#xB4DC;
+      .user_info
+        div #{user_nickname}
+          | &#xB2D8; &#xD658;&#xC601;&#xD569;&#xB2C8;&#xB2E4;.
+        | &#x9;&#x9;&#x9;&#x9;
+        a(href='/logout') &#xB85C;&#xADF8;&#xC544;&#xC6C3;
+      | &#x9;&#x9;&#x9;&#x9;
+      form(enctype='multipart/form-data', method='post', action='company_analyze')
+        input(type='file', class ='input', name='userfile', size='40', style='height:30px;')
+        | &#x9;&#x9;&#x9;&#x9;&#x9;
+        input(type='submit', class = 'input', value='업로드', style='height:30px;')
+        br
+        
+        - var length = user_file.length;
+        - var url = file_url;
+        
+         - for(var i=0; i< length; i++) {
+             a(href= url + user_file[i].Key)= user_file[i].Key
+             br
+             br
+         -}
+        
+

@@ -1,0 +1,87 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    |     
+    title &#xC2A4;&#xD130;&#xB514; &#xC790;&#xC720; &#xAC8C;&#xC2DC;&#xD310;
+    |     
+    |     
+    style.
+      .content {
+      margin:0 aut0;
+      text-align: center;
+      }
+      .board {
+      padding:20px;
+      }
+      .table {
+      margin:0 auto;
+      width: 400;
+      height: 200;
+      margin-top:50px;
+      }
+      .title {
+      margin-top:50px;
+      }
+      .user_info {
+      font-size: 2.0em;
+      text-align: right;
+      margin: 50px;
+      }
+      .btn {
+      width: 200px;
+      height: 55px;
+      font-size: 25px;
+      }
+  body
+    .content
+      .title
+        a(href='/board')
+          font(size='7.0em') &#xC2A4;&#xD130;&#xB514; &#xC790;&#xC720; &#xAC8C;&#xC2DC;&#xD310;
+      | &#x9;
+      | &#x9;&#x9;
+      .user_info
+        div #{user_nickname}&#xB2D8; &#xD658;&#xC601;&#xD569;&#xB2C8;&#xB2E4;.
+        | &#x9;&#x9;&#x9;
+        a(href='/logout') &#xB85C;&#xADF8;&#xC544;&#xC6C3;
+      | &#x9;
+      |     
+      table.table(border='1')
+        tr
+          th.board &#xAE00; &#xC81C;&#xBAA9;
+          |             
+          th &#xB0B4;&#xC6A9;
+          |     
+          th &#xC791;&#xC131;&#xC790;
+          |       
+          th &#xC791;&#xC131;&#xC77C;
+          |             
+          th &#xC870;&#xD68C;
+         
+        - var length = results.length;
+         - for(var i=0; i< length; i++) {
+            tr
+              th(onclick= "location.href='/board/ "+results[i].id+"'" style='cursor:pointer;')= results[i].title 
+              th= results[i].content
+              th= results2[i].nickname
+              
+              -year = results[i].created.getFullYear();
+              -month = results[i].created.getMonth() + 1;
+              -day = results[i].created.getDate();
+              -hour = results[i].created.getHours();
+              -minute = results[i].created.getMinutes();
+              -second = results[i].created.getSeconds();
+              -created = year + "년 " + month + "월 " + day + "일 " + hour + "시 " +  minute + "분 " + second + "초 ";
+              th= created
+              th= results[i].hits
+         -}
+
+      article 
+        h1= 'Delete? '+ result.title
+        form(action='/board/'+result.id+'/delete/?_method=DELETE' method = 'post')
+          p  
+            input(type ="submit" class = 'btn' value = 'YES')
+           
+          a(href='/board/')
+              button(type='button' class = 'btn') No
+             
