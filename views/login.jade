@@ -1,0 +1,112 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    |  
+    title &#xB85C;&#xADF8;&#xC778; &#xD398;&#xC774;&#xC9C0;
+    |  &#x9;
+    |  &#x9;
+    script(type='text/javascript').
+      if( #{authType} == 1 ){
+        alert("아이디 오류");
+      }else if( #{authType} == 2) {
+        alert("비밀번호 오류.");
+      } else if ( #{authType} == 3) {
+        alert("회원가입 완료.");
+      } else if(#{authType} == 4) {
+        alert("이메일 전송 완료.");
+      } else if(#{authType} == 5) {
+        alert("비밀번호 변경완료.");
+      } else if(#{authType} == 6) {
+        alert("권한이 없는 사용자입니다.");
+      }
+    style.
+      .content {
+      margin:0 aut0;
+      text-align: center;
+      }
+      #title {
+      width: 100%;
+      height: 100px;
+      line-height:100px;
+      color: #000000;
+      }
+      #main {
+      margin: 50px;
+      font-size: 2.0em
+      }
+      .table {
+      margin:0 auto;
+      width: 400;
+      height: 200;
+      margin-bottom:200px;
+      padding:80px;
+      border: 1px solid #000000;
+      }
+      .loginBtn {
+      width: 400px;
+      height: 100px;
+      font-size: 30px;
+      color:#000000
+      }
+      .id_pw  {
+      margin-bottom : 50px;
+      padding-bottom : 50px;
+      }
+      .join_find {
+      margin-top: 50px;
+      }
+      .input {
+      width:200px;
+      height:30px;
+      font-size:1.0em
+      }
+    head
+  body
+    form(action='/login', method='post')
+      .content
+        .wrap
+          #title
+            font(size='10') &#xC2A4;&#xD130;&#xB514; &#xAC8C;&#xC2DC;&#xD310;
+          | &#x9;&#x9;&#x9;&#x9;
+          hr
+          | &#x9;&#x9;&#x9;
+          | &#x9;&#x9;&#x9;&#x9;&#x9;
+          p#main &#xB85C;&#xADF8;&#xC778;
+          | &#x9;&#x9;&#x9;
+          | &#x9;&#x9;&#x9;
+          table.table
+            tr
+              td
+                .id_pw
+                  font(size='6') &#xC544;&#xC774;&#xB514;
+              | &#x9;&#x9;&#x9;&#x9;&#x9;
+              td
+                .id_pw
+                  input.input(type='text', name='id')
+            | &#x9;&#x9;&#x9; 
+            | &#x9;&#x9;&#x9;&#x9; 
+            tr
+              td
+                .id_pw
+                  font(size='6') &#xBE44;&#xBC00;&#xBC88;&#xD638;&nbsp;
+              | &#x9;&#x9;&#x9;&#x9;&#x9;
+              td
+                .id_pw
+                  input.input(type='password', name='pw')
+          | &#x9;&#x9;&#x9;
+          | &#x9;&#x9;&#x9;
+          | &#x9;&#x9;&#x9;
+          input.loginBtn(type='submit', value='로그인')
+          | &#x9;&#x9;&#x9;
+          | &#x9;&#x9;&#x9;
+          .join_find
+            a(href='join.html')
+              font(size='5') &#xD68C;&#xC6D0; &#xAC00;&#xC785;  | 
+            | &#x9;&#x9;&#x9;&#x9;
+            a(href='pw_find.html')
+              font(size='5') &#xBE44;&#xBC00;&#xBC88;&#xD638; &#xCC3E;&#xAE30;
+            | &#x9;&#x9;&#x9;&#x9;
+            a(href='pw_update.html')
+              font(size='5') &#xBE44;&#xBC00;&#xBC88;&#xD638; &#xBCC0;&#xACBD;
+

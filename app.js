@@ -68,7 +68,7 @@ app.post('/login', function(req, res){
     
         //아이디 존재하지 않는 경우
             if(result.length == 0) {
-                res.redirect('/login.html');// 리다이렉션
+                res.render('./login', {authType : 1});
             }
 
             else { //아이디는 존재하므로 비밀번호만 확인하면 된다.
@@ -85,14 +85,14 @@ app.post('/login', function(req, res){
                         req.session.authority = user.authority;
 
                         req.session.save(function(){
-                            res.redirect('/login');
+                            res.redirect(('./login/success');
                             return;
                         });
                     }
                     else {
                         //인증 실패
                         //비밀번호가 다른경우
-                        res.redirect('/login.html');// 리다이렉션
+                        res.render('./login', {authType : 2});
                         return;
                     }
                 })
@@ -106,6 +106,11 @@ app.get('/login', function(req, res){
     res.render('./main', {user_id: req.session.id, user_nickname: req.session.nickname, user_admin: req.session.admin});
 });
 
+//로그인 성공화면
+app.get('/login/success', function(req, res) {
+	res.render('./main', {user_id: req.session.id, user_nickname: req.session.nickname, user_admin: req.session.admin});
+});
+
 //로그 아웃
 app.get('/logout', function(req, res){
     delete req.session.nickname;
@@ -113,7 +118,7 @@ app.get('/logout', function(req, res){
     delete req.session.admin;
     delete req.session.authority;
     req.session.save(function(){
-        res.redirect('/login.html');
+        res.render('./login', {authType : 0 });
     })
 });
 
@@ -143,7 +148,7 @@ app.post('/join', function(req, res) {
         var params = [id, hash, name, nickname, gender, phone, email, domain, salt];
         connection.query(sql, params, function(err, result, fields){
 
-            res.redirect('/login.html');// 리다이렉션
+            res.render('./login', {authType : 3});
 });
 });
 });
@@ -193,12 +198,12 @@ app.post('/password', function(req, res) {
                             smtpTransport.close();
                         });
         
-                        res.send("이메일 전송!");
+                        res.render('./login', {authType : 4 }); // 이메일 전송 완료
                 });
              })
             }
             else {
-                res.send("없는 아이디 입니다.");
+                res.render('./login', {authType : 1 }); // 없는 아이디 입니다.
             }
     });
 });
@@ -229,18 +234,18 @@ app.put('/password', function(req, res){
                             hasher({password:pw_update}, function(err, pass, salt, hash){
                             var sql3 = "UPDATE user_table set pw=?, pw_salt=? where user_id = ?";
                             connection.query(sql3, [hash, salt, id], function(err, result, fields){
-                                res.send("비밀번호가 정상적으로 변경되었습니다.");
+                            res.render('./login', {authType : 5 });
                         });
                     });
                     }
                         else {
-                            res.send("비밀번호 오류.");
+                            res.render('./login', {authType : 2}); // 비밀번호 오류
                         }
-                    });
+                  });
              })
         }
             else {
-                res.send("없는 아이디 입니다.");
+                res.render('./login', {authType : 1 }); // 아이디 오류
             }
     });
 });
