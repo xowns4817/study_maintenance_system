@@ -103,7 +103,12 @@ app.post('/login', function(req, res){
 
 //로그인 성공한 화면
 app.get('/login', function(req, res){ 
+
+    if(req.session.nickname) {
+	res.render('./main', {user_id: req.session.id, user_nickname: req.session.nickname, user_admin: req.session.admin});
+    } else {
     res.render('./main', {user_id: req.session.id, user_nickname: req.session.nickname, user_admin: req.session.admin});
+   }
 });
 
 //로그인 성공화면
